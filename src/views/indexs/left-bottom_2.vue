@@ -19,25 +19,24 @@
             <div class="dibu"></div>
             <div class="flex">
               <div class="info">
-                <span class="labels">队长：</span>
+                <span class="labels">施工队长：</span>
                 <span class="contents zhuyao doudong wangguan">
                   {{ item.captain }}</span
                 >
               </div>
               <div class="info">
-                <span class="labels">告警名称：</span>
+                <span class="labels">告警数量：</span>
                 <span class="contents " style="font-size: 12px">
-                  {{ item.name }}</span
+                  {{ item.num }}</span
                 >
               </div>
             </div>
 
 
-
             <div class="info addresswrap">
-              <span class="labels">告警原因：</span>
+              <span class="labels">平均处理时长：</span>
               <span class="contents ciyao" style="font-size: 12px">
-                {{ item.reason }}</span
+                {{ item.avg }}</span
               >
             </div>
           </div>
@@ -100,7 +99,7 @@ export default {
     getData() {
       this.pageflag = true;
       // this.pageflag =false
-      currentGET("big3", { limitNum: 20 }).then((res) => {
+      currentGET("big10", { limitNum: 20 }).then((res) => {
         console.log("设备提醒", res);
         if (res.success) {
           this.countUserNumData = res.data;

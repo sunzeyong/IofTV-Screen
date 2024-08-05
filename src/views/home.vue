@@ -23,7 +23,7 @@
           <div class="guang"></div>
           <div class="d-flex jc-center">
             <div class="title">
-              <span class="title-text">互联网设备可视化平台</span>
+              <span class="title-text">5G新建站告警全生命周期监控评估系统</span>
             </div>
           </div>
           <div class="timers">

@@ -16,7 +16,8 @@ export const paramType ={
     'big6':'/bigscreen/installationPlan',// 安装计划
     'big7':'/bigscreen/ranking',// 报警排名
     'big8':'/bigscreen/centermap',// //中间地图
-
+    'big9':'/bigscreen/companyavg',// // 公司平均值
+    'big10':'/bigscreen/captainavg',// // 队长平均值
 }
 /******************      通用增删改查       ********************* */
 /**

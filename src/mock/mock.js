@@ -9,13 +9,34 @@ const Random = Mock.Random;
 function countUserNum() {
     const a = Mock.mock({
         success: true,
-        data: {
-            offlineNum:'@integer(1, 100)',
-            lockNum: '@integer(1, 10)',
-            totalNum:218
-        }
+        data: [
+            {
+                "key":"外部扩展设备故障",
+                "value":100,
+            },
+            {
+                "key":"单板未配置",
+                "value":90,
+            },
+            {
+                "key":"RRU链路断",
+                "value":88,
+            },
+            {
+                "key":"光口链路故障",
+                "value":70,
+            },
+            {
+                "key":"输入电源断",
+                "value":60,
+            },
+            {
+                "key":"其他",
+                "value":133,
+            }
+        ],
     })
-    a.data.onlineNum=a.data.totalNum-a.data.offlineNum-a.data.lockNum
+    
     return a
 }
 
@@ -41,23 +62,129 @@ function countDeviceNum() {
 
 Mock.mock(new RegExp('countDeviceNum'), 'get', countDeviceNum)
 
-// /设备总览 
+function companyavg() {
+    const a = Mock.mock({
+        success: true,
+        data: {
+            list: [
+                {
+                    company: "四局",
+                    num: 100,
+                    avg: "1小时30分钟12秒",
+                },
+                {
+                    company: "五局",
+                    num: 300,
+                    avg: "20分钟12秒",
+                },
+                {
+                    company: "六局",
+                    num: 44,
+                    avg: "3分钟12秒",
+                },
+                {
+                    company: "七局",
+                    num: 66,
+                    avg: "12秒",
+                },
+                {
+                    company: "八局",
+                    num: 22,
+                    avg: "2秒",
+                },
+                {
+                    company: "九局",
+                    num: 99,
+                    avg: "2秒",
+                },
+            ]
+        }
+    })
+    return a
+
+}
+
+Mock.mock(new RegExp('companyavg'), 'get', companyavg)
+
+function captainavg() {
+    const a = Mock.mock({
+        success: true,
+        data: {
+            list: [
+                {
+                    captain: "张三",
+                    num: 100,
+                    avg: "1小时30分钟12秒",
+                },
+                {
+                    captain: "李四",
+                    num: 300,
+                    avg: "20分钟12秒",
+                },
+                {
+                    captain: "王五",
+                    num: 44,
+                    avg: "3分钟12秒",
+                },
+                {
+                    captain: "李六",
+                    num: 66,
+                    avg: "12秒",
+                },
+                {
+                    captain: "赵七",
+                    num: 22,
+                    avg: "2秒",
+                },
+            ]
+        }
+    })
+    return a
+
+}
+
+Mock.mock(new RegExp('captainavg'), 'get', captainavg)
+
+
+
+
+
 
 function sbtx() {
     const a = Mock.mock({
         success: true,
         data: {
-            "list|20": [
+            list: [
                 {
-                    provinceName: "@province()",
-                    cityName: '@city()',
-                    countyName: "@county()",
-                    createTime: "@datetime('yyyy-MM-dd HH:mm:ss')",
-                    deviceId: "6c512d754bbcd6d7cd86abce0e0cac58",
-                    "gatewayno|+1": 10000,
-                    "onlineState|1": [0, 1],
-
-                }
+                    captain: "张三",
+                    name: '外部扩展设备故障',
+                    reason: "电源类型：交流。Location：rack=54,shelf=1,board=1。",
+                },
+                {
+                    captain: "王五",
+                    name: '外部扩展设备故障',
+                    reason: "AISG设备ID：4，机架号：8，设备类型：RETC。Location：rack=56,shelf=1,board=1。",
+                },
+                {
+                    captain: "李四",
+                    name: '输入电源断',
+                    reason: "单板上电。Location：rack=1,shelf=1,board=8。",
+                },
+                {
+                    captain: "李六",
+                    name: '光模块接收光功率异常',
+                    reason: "配置变更。Location：rack=53,shelf=1,board=1。",
+                },
+                {
+                    captain: "赵七",
+                    name: '硬件类型和配置不一致',
+                    reason: "单板上电。Location：rack=1,shelf=1,board=7。",
+                },
+                {
+                    captain: "钱八",
+                    name: '单板处于初始化状态',
+                    reason: "配置变更。Location：rack=53,shelf=1,board=1。",
+                },
             ]
         }
     })

@@ -19,10 +19,6 @@ export default {
     return {
       options: {},
       countUserNumData: {
-        lockNum: 0,
-        onlineNum: 0,
-        offlineNum: 0,
-        totalNum: 0
       },
       pageflag: true,
       timer: null
@@ -46,12 +42,10 @@ export default {
     },
     getData() {
       this.pageflag = true
-      // this.pageflag =false
 
       currentGET('big1').then(res => {
-        //只打印一次
         if (!this.timer) {
-          console.log("设备总览", res);
+          console.log("告警分类", res);
         }
         if (res.success) {
           this.countUserNumData = res.data
@@ -86,10 +80,13 @@ export default {
       });
     },
     init() {
-      let total = this.countUserNumData.totalNum;
-      let colors = ["#ECA444", "#33A1DB", "#56B557"];
+      let total = 0;
+      for (let i = 0; i < this.countUserNumData.length; i++) {
+        total += this.countUserNumData[i].value;
+      }
+      let colors = ["#ECA444", "#33A1DB", "#56B557","#ECA444", "#33A1DB", "#56B557"];
       let piedata = {
-        name: "用户总览",
+        name: "告警类型分布",
         type: "pie",
         radius: ["42%", "65%"],
         avoidLabelOverlap: false,
@@ -101,34 +98,49 @@ export default {
 
         color: colors,
         data: [
-          // {
-          //   value: 0,
-          //   name: "告警",
-          //   label: {
-          //     shadowColor: colors[0],
-          //   },
-          // },
           {
-            value: this.countUserNumData.lockNum,
-            name: "锁定",
+            value: this.countUserNumData[0].value,
+            name: this.countUserNumData[0].key,
             label: {
               shadowColor: colors[0],
             },
           },
           {
-            value: this.countUserNumData.onlineNum,
-            name: "在线",
+            value: this.countUserNumData[1].value,
+            name: this.countUserNumData[1].key,
             label: {
               shadowColor: colors[2],
             },
           },
           {
-            value: this.countUserNumData.offlineNum,
-            name: "离线",
+            value: this.countUserNumData[2].value,
+            name: this.countUserNumData[2].key,
             label: {
               shadowColor: colors[1],
             },
           },
+          {
+            value: this.countUserNumData[3].value,
+            name: this.countUserNumData[3].key,
+            label: {
+              shadowColor: colors[0],
+            },
+          },
+          {
+            value: this.countUserNumData[4].value,
+            name: this.countUserNumData[4].key,
+            label: {
+              shadowColor: colors[2],
+            },
+          },
+          {
+            value: this.countUserNumData[5].value,
+            name: this.countUserNumData[5].key,
+            label: {
+              shadowColor: colors[1],
+            },
+          },
+
 
 
         ],
