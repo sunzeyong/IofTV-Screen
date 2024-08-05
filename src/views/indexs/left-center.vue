@@ -28,26 +28,22 @@ export default {
     this.getData()
   },
   mounted() {
+    this.getData()
+    this.timer = setInterval(() => {
+      this.getData()
+    }, 10000); // 每10秒执行一次
   },
   beforeDestroy() {
-    this.clearData()
-
   },
+
   methods: {
-    clearData() {
-      if (this.timer) {
-        clearInterval(this.timer)
-        this.timer = null
-      }
-    },
+
     getData() {
       this.pageflag = true
 
       currentGET('big1').then(res => {
-        if (!this.timer) {
-          console.log("告警分类", res);
-        }
         if (res.success) {
+          console.log("告警分类", res.data);
           this.countUserNumData = res.data
           this.$nextTick(() => {
             this.init()

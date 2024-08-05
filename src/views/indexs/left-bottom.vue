@@ -62,8 +62,8 @@ export default {
       components: vueSeamlessScroll,
       defaultOption: {
         ...this.$store.state.setting.defaultOption,
-        singleHeight: 240,
-        limitMoveNum: 5, 
+        singleHeight: 100,
+        limitMoveNum: 2, 
         step: 0,
       },
     };
@@ -85,6 +85,12 @@ export default {
 
   mounted() {
     this.getData();
+    this.timer = setInterval(() => {
+      this.getData()
+    }, 10000); // 每10秒执行一次
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
   methods: {
     addressHandle(item) {
@@ -101,10 +107,9 @@ export default {
       this.pageflag = true;
       // this.pageflag =false
       currentGET("big3", { limitNum: 20 }).then((res) => {
-        console.log("设备提醒", res);
+        console.log("新增告警", res);
         if (res.success) {
-          this.countUserNumData = res.data;
-          this.list = res.data.list;
+          this.list = res.data;
           let timer = setTimeout(() => {
             clearTimeout(timer);
             this.defaultOption.step =

@@ -35,7 +35,7 @@
             <div class="info addresswrap">
               <span class="labels">平均处理时长：</span>
               <span class="contents ciyao" style="font-size: 12px">
-                {{ item.avg }}</span
+                {{ item.avgStr }}</span
               >
             </div>
           </div>
@@ -83,6 +83,12 @@ export default {
 
   mounted() {
     this.getData();
+    this.timer = setInterval(() => {
+      this.getData()
+    }, 10000); // 每10秒执行一次
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
   methods: {
     addressHandle(item) {
@@ -99,10 +105,10 @@ export default {
       this.pageflag = true;
       // this.pageflag =false
       currentGET("big9", { limitNum: 20 }).then((res) => {
-        console.log("设备提醒", res);
+        console.log("施工单位处理时长", res);
         if (res.success) {
           this.countUserNumData = res.data;
-          this.list = res.data.list;
+          this.list = res.data;
           let timer = setTimeout(() => {
             clearTimeout(timer);
             this.defaultOption.step =

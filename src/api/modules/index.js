@@ -8,16 +8,10 @@
 import * as API from "../api";
 
 export const paramType ={
-    'big1':"/bigscreen/countUserNum", //用户总览
-    'big2':"/bigscreen/countDeviceNum", //设备总览 
-    'big3':"/bigscreen/sbtx", //设备提醒
-    'big4':"/bigscreen/alarmNum", //报警次数
-    'big5':'/bigscreen/ssyj',//实时预警 
-    'big6':'/bigscreen/installationPlan',// 安装计划
-    'big7':'/bigscreen/ranking',// 报警排名
-    'big8':'/bigscreen/centermap',// //中间地图
-    'big9':'/bigscreen/companyavg',// // 公司平均值
-    'big10':'/bigscreen/captainavg',// // 队长平均值
+    'big1':"/api/v1/alarmtypestat", // 告警饼图
+    'big3':"/api/v1/newalarms", // 最新告警
+    'big9':'/api/v1/companystat',// // 公司平均值
+    'big10':'/api/v1/captainstat',// // 队长平均值
 }
 /******************      通用增删改查       ********************* */
 /**
