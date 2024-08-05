@@ -32,8 +32,6 @@
               </div>
             </div>
 
-
-
             <div class="info addresswrap">
               <span class="labels">告警原因：</span>
               <span class="contents ciyao" style="font-size: 12px">
@@ -192,7 +190,7 @@ export default {
     .inner_right {
       position: relative;
       height: 100%;
-      width: 380px;
+      width: 600px;
       flex-shrink: 0;
       line-height: 1;
       display: flex;

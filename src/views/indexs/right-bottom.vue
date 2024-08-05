@@ -138,7 +138,7 @@ export default {
     .inner_right {
       position: relative;
       height: 100%;
-      width: 400px;
+      width: 600px;
       flex-shrink: 0;
       line-height: 1.5;
 

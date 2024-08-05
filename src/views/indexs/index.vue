@@ -87,13 +87,14 @@ export default {
 .contents {
   .contetn_left,
   .contetn_right {
-    width: 1000px;
+    width: 900px;
     box-sizing: border-box;
-    // padding: 16px 0;
+    padding: 16px 0;
   }
 
   .contetn_lr-item {
-    height: 310px;
+    height: 400px;
+    padding: 16px 0;
   }
 
   .contetn_left {
